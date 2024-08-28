@@ -1,0 +1,8 @@
+  views:
+    - nome das tabelas que serão utilizadas no projeto
+    
+  s3:
+    key: key
+    secret: secret
+    bucket: bucket_name
+    path: path_to_file
