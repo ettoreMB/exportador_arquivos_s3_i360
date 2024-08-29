@@ -6,15 +6,20 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"strconv"
 )
 
-func ConnectToDb() (*sql.DB, error) {
+func ConnectToDb(config *Config) (*sql.DB, error) {
 	query := url.Values{}
+	port, err := strconv.Atoi(config.Db.Port)
+	if err != nil {
+		return nil, err
+	}
 	query.Add("database", "csl_2023")
 	u := &url.URL{
 		Scheme:   "sqlserver",
-		User:     url.UserPassword("db", "@Mepm2412"),
-		Host:     fmt.Sprintf("%s:%d", "wfbdbserver.database.windows.net", 1433),
+		User:     url.UserPassword(config.Db.User, config.Db.Password),
+		Host:     fmt.Sprintf("%s:%d", config.Db.Host, port),
 		RawQuery: query.Encode(),
 	}
 

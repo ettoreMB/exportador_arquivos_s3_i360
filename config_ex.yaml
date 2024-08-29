@@ -6,3 +6,10 @@
     secret: secret
     bucket: bucket_name
     path: path_to_file
+
+  db:
+    host: host
+    user: user
+    password: password
+    database: database
+    port: port

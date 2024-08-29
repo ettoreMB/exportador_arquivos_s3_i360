@@ -6,6 +6,13 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+type Db struct {
+	Host     string `yaml:"host"`
+	Port     string `yaml:"port"`
+	User     string `yaml:"user"`
+	Password string `yaml:"password"`
+}
+
 type S3 struct {
 	key    string `yaml:"key"`
 	Secret string `yaml:"secret"`
@@ -17,6 +24,7 @@ type S3 struct {
 type Config struct {
 	Views []string `yaml:"views"`
 	S3    S3       `yaml:"s3"`
+	Db    Db       `yaml:"db"`
 }
 
 func ReadConfigFile() (Config, error) {
